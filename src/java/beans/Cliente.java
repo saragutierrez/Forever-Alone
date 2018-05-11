@@ -11,10 +11,23 @@ package beans;
  */
 public class Cliente extends Usuario {
 
+    private Endereco endereco;
     private Perfil perfil;
     private Preferencias preferencias;
 
-    public Perfil getPerfil() {
+    public Cliente() {
+		super();
+	}
+
+	public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+	public Perfil getPerfil() {
         return perfil;
     }
 

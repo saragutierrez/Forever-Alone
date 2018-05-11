@@ -17,7 +17,7 @@ public class Perfil {
     private String escolaridade;
     private String corCabelo;
     private String corPele;
-    private Date aniversario;
+    private Date dataNasc;
 
     public String getGenero() {
         return genero;
@@ -51,12 +51,12 @@ public class Perfil {
         this.corPele = corPele;
     }
 
-    public Date getAniversario() {
-        return aniversario;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setAniversario(Date aniversario) {
-        this.aniversario = aniversario;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
 }

@@ -6,20 +6,21 @@
 package dao;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.util.Properties;
 
 /**
  *
  * @author luck
- * Classe que realiza a conex√£o com o banco de dados.
- * COnfigurar banco de dados no arquivo db.properties
+ * Classe que realiza a conex„o com o banco de dados.
+ * Configurar banco de dados no arquivo db.properties
  */
 public class ConnectionFactory {
 
-    public Connection getConnection() throws IOException {
+    public Connection getConnection() throws IOException, InstantiationException, IllegalAccessException {
         try {
             Properties prop = new Properties ();
             prop.load ((getClass().getResourceAsStream("/Forever-Alone/db.properties")));
@@ -27,7 +28,7 @@ public class ConnectionFactory {
             String dbUrl = prop.getProperty("db.url");
             String dbUser = prop.getProperty("db.user");
             String dbPwd = prop.getProperty("db.pwd");
-            Class.forName(dbDriver);
+            DriverManager.registerDriver((Driver) Class.forName(dbDriver).newInstance());
             return DriverManager.getConnection(dbUrl, dbUser,
                     dbPwd);
         } catch (ClassNotFoundException | IOException | SQLException ex) {

@@ -14,10 +14,9 @@ import java.util.Date;
 public class Usuario {
 
     private int idUsuario;
-    private String Login;
-    private String senha;
-    private String email;
+    private String tipoUsuario;
     private String nome;
+    private String email;
     private String cpf;
     private Date dataRegistro;
 
@@ -29,21 +28,13 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getLogin() {
-        return Login;
-    }
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
 
-    public void setLogin(String Login) {
-        this.Login = Login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 
     public String getEmail() {
         return email;

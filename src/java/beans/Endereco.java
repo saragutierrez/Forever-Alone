@@ -12,7 +12,8 @@ package beans;
 public class Endereco {
 
     private Cidade cidade;
-    private String endereco;
+    private String rua;
+    private int cep;
 
     public Cidade getCidade() {
         return cidade;
@@ -22,11 +23,19 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
+
+	public int getCep() {
+		return cep;
+	}
+
+	public void setCep(int cep) {
+		this.cep = cep;
+	}
 }

@@ -15,4 +15,37 @@ public class FluxoCaixa {
     private int anoRelatorio;
     private int mesRelatorio;
     private ItensFluxoCaixa itensFluxoCaixa;
+    
+	public String getTipoRelatorio() {
+		return tipoRelatorio;
+	}
+	
+	public void setTipoRelatorio(String tipoRelatorio) {
+		this.tipoRelatorio = tipoRelatorio;
+	}
+	
+	public int getAnoRelatorio() {
+		return anoRelatorio;
+	}
+	
+	public void setAnoRelatorio(int anoRelatorio) {
+		this.anoRelatorio = anoRelatorio;
+	}
+	
+	public int getMesRelatorio() {
+		return mesRelatorio;
+	}
+	
+	public void setMesRelatorio(int mesRelatorio) {
+		this.mesRelatorio = mesRelatorio;
+	}
+	
+	public ItensFluxoCaixa getItensFluxoCaixa() {
+		return itensFluxoCaixa;
+	}
+	
+	public void setItensFluxoCaixa(ItensFluxoCaixa itensFluxoCaixa) {
+		this.itensFluxoCaixa = itensFluxoCaixa;
+	}
+    
 }
