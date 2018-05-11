@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package src.java.dao;
 
-import beans.Cliente;
+import src.java.beans.Cliente;
 
 import java.io.IOException;
 import java.sql.Connection;
