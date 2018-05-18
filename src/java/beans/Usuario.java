@@ -17,6 +17,7 @@ public class Usuario {
     private String tipoUsuario;
     private String nome;
     private String email;
+    private String senha;
     private String cpf;
     private Date dataRegistro;
 
@@ -36,20 +37,20 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getNome() {
-        return nome;
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSenha() {
+        return senha;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getCpf() {
@@ -60,7 +61,15 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public Date getDataRegistro() {
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDataRegistro() {
         return dataRegistro;
     }
 

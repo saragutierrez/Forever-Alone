@@ -18,6 +18,7 @@ public class Perfil {
     private String corCabelo;
     private String corPele;
     private Date dataNasc;
+    private String descricao;
 
     public String getGenero() {
         return genero;
@@ -58,5 +59,13 @@ public class Perfil {
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 }

@@ -14,9 +14,10 @@ import java.util.Date;
 public class Festa {
 
     private int idFesta;
+    private String nomeFesta;
+    private String temaFesta;
     private String localFesta;
     private Date dataFesta;
-    private String temaFesta;
 
     public int getIdFesta() {
         return idFesta;
@@ -26,7 +27,15 @@ public class Festa {
         this.idFesta = idFesta;
     }
 
-    public String getLocalFesta() {
+    public String getNomeFesta() {
+		return nomeFesta;
+	}
+
+	public void setNomeFesta(String nomeFesta) {
+		this.nomeFesta = nomeFesta;
+	}
+
+	public String getLocalFesta() {
         return localFesta;
     }
 
