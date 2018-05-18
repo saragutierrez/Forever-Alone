@@ -105,13 +105,15 @@ CREATE TABLE tb_preferencias (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
  );
-
+ 
 CREATE TABLE tb_festa (
   id_festa INT NOT NULL auto_increment,
   nome_festa VARCHAR(80) NULL,
   tema_festa VARCHAR(80) NULL,
   lugar_festa VARCHAR(80) NULL,
   data_festa DATETIME NULL,
+  convite_festa FLOAT NULL,
+  valortotal_festa FLOAT NULL,
   PRIMARY KEY (id_festa)
 );
 
