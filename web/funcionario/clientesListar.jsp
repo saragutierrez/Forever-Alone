@@ -10,9 +10,7 @@
 <%@page import="java.io.IOException"%>
 <%@page import="com.sun.faces.application.WebPrintWriter"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="com.ufpr.tads.web2.beans.Cliente"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ufpr.tads.web2.beans.LoginBean"%>
 <%@page import="com.mysql.cj.util.StringUtils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="erro.jsp" %>
@@ -87,7 +85,7 @@
                 </div>
             </div>
         </div>
-                    <%@include file="footer.jsp" %>
+                    <%@include file="../footer.jsp" %>
     </body>
 </html>
     </c:otherwise>    
