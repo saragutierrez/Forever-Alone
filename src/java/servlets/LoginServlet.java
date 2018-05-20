@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.java.servlets;
+package servlets;
 
 import com.mysql.cj.util.StringUtils;
-import src.java.beans.Usuario;
-import src.java.dao.UsuarioDAO;
+import beans.Usuario;
+import dao.UsuarioDAO;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;

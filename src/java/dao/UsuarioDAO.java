@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.java.dao;
+package dao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import src.java.beans.Usuario;
+import beans.Usuario;
 
 
 /**

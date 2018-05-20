@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.java.servlets;
+package servlets;
 
 import static java.lang.Integer.parseInt;
 
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import src.java.beans.Cidade;
-import src.java.facades.EnderecoFacade;
+import beans.Cidade;
+import facades.EnderecoFacade;
 
 /**
  *

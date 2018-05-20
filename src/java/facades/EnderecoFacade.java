@@ -1,13 +1,13 @@
-package src.java.facades;
+package facades;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import src.java.beans.Cidade;
-import src.java.beans.Estado;
-import src.java.dao.CidadeDAO;
-import src.java.dao.EstadoDAO;
+import beans.Cidade;
+import beans.Estado;
+import dao.CidadeDAO;
+import dao.EstadoDAO;
 
 public class EnderecoFacade {
 	

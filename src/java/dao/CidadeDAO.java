@@ -1,4 +1,4 @@
-package src.java.dao;
+package dao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.java.beans.Cidade;
+import beans.Cidade;
 
 public class CidadeDAO {
 	Connection con = null;

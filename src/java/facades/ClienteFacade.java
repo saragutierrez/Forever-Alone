@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.java.facades;
+package facades;
 
-import src.java.beans.Cliente;
-import src.java.dao.ClienteDAO;
+import beans.Cliente;
+import dao.ClienteDAO;
 
 import java.io.IOException;
 import java.io.Serializable;

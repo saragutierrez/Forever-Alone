@@ -1,4 +1,4 @@
-package src.java.facades;
+package facades;
 
 public class LoginFacade {
 
