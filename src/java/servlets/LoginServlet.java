@@ -44,18 +44,18 @@ public class LoginServlet extends HttpServlet {
     	
     	String login = request.getParameter("login");
     	String senha = request.getParameter("senha");
-    	Usuario user = LoginFacade.verificarLogin(login,senha);
+    	Usuario user = LoginFacade.verificaLogin(login,senha);
 		
     	if(!StringUtils.isNullOrEmpty(user.getTipoUsuario())){
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			//Redirecionar para a página inicial correta conforme tipo de usuario
+			//Redirecionar para a pagina inicial correta conforme tipo de usuario
 			String paginaInicial = user.getTipoUsuario();
 			response.sendRedirect(paginaInicial.toLowerCase()+"/home"+paginaInicial+".jsp");
 		}
 		else{
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("msg", "Usuário/Senha inválidos.");
+			request.setAttribute("msg", "Usuï¿½rio/Senha invï¿½lidos.");
 			rd.forward(request, response);
 		}
     }

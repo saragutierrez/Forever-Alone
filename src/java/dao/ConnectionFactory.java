@@ -15,7 +15,7 @@ import java.util.Properties;
 /**
  *
  * @author luck
- * Classe que realiza a conexão com o banco de dados.
+ * Classe que realiza a conexao com o banco de dados.
  * Configurar banco de dados no arquivo db.properties
  */
 public class ConnectionFactory {
@@ -23,7 +23,7 @@ public class ConnectionFactory {
     public Connection getConnection() throws IOException, InstantiationException, IllegalAccessException {
         try {
             Properties prop = new Properties ();
-            prop.load ((getClass().getResourceAsStream("/Forever-Alone/db.properties")));
+            prop.load ((getClass().getResourceAsStream("/db.properties")));
             String dbDriver = prop.getProperty("db.driver");
             String dbUrl = prop.getProperty("db.url");
             String dbUser = prop.getProperty("db.user");

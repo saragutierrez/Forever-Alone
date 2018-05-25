@@ -33,7 +33,7 @@ public class UsuarioDAO {
     
     // Verifica o login no sistema
     // 1 - Usuario ativo
-    // 2 - login e senha válidos
+    // 2 - login e senha validos
     // Retorna o usuario
     public Usuario verificaLogin(String login, String senha) throws IOException, SQLException, InstantiationException, IllegalAccessException{
     	boolean logou = false;
@@ -48,7 +48,7 @@ public class UsuarioDAO {
 	            stmt = con.prepareStatement(VERIFY_FUNCIONARIO);
 	            rs = stmt.executeQuery();
 	            while(rs.next()){
-	                //Verificando se o funcionario é Admin
+	                //Verificando se o funcionario ï¿½ Admin
 	                if(rs.getBoolean(1))
 	                	user.setTipoUsuario(getTipoUsuario(1));
 	                else
@@ -57,6 +57,7 @@ public class UsuarioDAO {
 	                user.setNome(rs.getString(3));
 	                logou = true;
 	            }
+                    rs.close();
 	            if(!logou) {
 	            	//Verificando cliente
 		            stmt = con.prepareStatement(VERIFY_CLIENTE);
@@ -66,13 +67,13 @@ public class UsuarioDAO {
 		                user.setIdUsuario(rs.getInt(2));
 		                user.setNome(rs.getString(3));
 		                logou = true;
-		            }	            	
+		            }
+                            rs.close();
 	            }
 	            return user;
 	        } catch (SQLException e) {
 	            throw new RuntimeException(e);
 	        }finally {
-	        	rs.close();
 	            con.close();
 	        }
 

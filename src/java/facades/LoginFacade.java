@@ -13,7 +13,7 @@ import dao.UsuarioDAO;
 
 public class LoginFacade {
 
-	public static Usuario verificarLogin(String login, String senha) {
+	public static Usuario verificaLogin(String login, String senha) {
 		try {
 			String psw = md5(senha);
 			Usuario user = new UsuarioDAO().verificaLogin(login,psw);

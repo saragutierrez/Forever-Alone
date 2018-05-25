@@ -29,7 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-    	//Adicionar as classes Resource que serão usadas pelo Web Service aqui
+    	//Adicionar as classes Resource que serao usadas pelo Web Service aqui
     	//        resources.add(com.ufpr.tads.web2.ws.ProdutoResource.class);
     	//        resources.add(com.ufpr.tads.web2.ws.AtendimentoResource.class);
     }
