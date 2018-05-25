@@ -7,11 +7,9 @@ package servlets;
 
 import com.mysql.cj.util.StringUtils;
 import beans.Usuario;
-import dao.UsuarioDAO;
+import facades.LoginFacade;
+
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,44 +41,25 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        
-            UsuarioDAO dao = new UsuarioDAO();
-            String psw = md5(request.getParameter("senha"));
-            Usuario user;
-			try {
-				user = dao.verificaLogin(request.getParameter("login"),psw);				
-				if(!StringUtils.isNullOrEmpty(user.getTipoUsuario())){
-					HttpSession session = request.getSession();
-					session.setAttribute("user", user);
-					response.sendRedirect("portal.jsp");
-				}
-				else{
-					RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-					request.setAttribute("msg", "Usuário/Senha inválidos.");
-					rd.forward(request, response);
-				}
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+    	
+    	String login = request.getParameter("login");
+    	String senha = request.getParameter("senha");
+    	Usuario user = LoginFacade.verificarLogin(login,senha);
+		
+    	if(!StringUtils.isNullOrEmpty(user.getTipoUsuario())){
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			//Redirecionar para a página inicial correta conforme tipo de usuario
+			String paginaInicial = user.getTipoUsuario();
+			response.sendRedirect(paginaInicial.toLowerCase()+"/home"+paginaInicial+".jsp");
+		}
+		else{
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("msg", "Usuário/Senha inválidos.");
+			rd.forward(request, response);
+		}
     }
     
-    public static String md5(String senha){
-		String psw = "";
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
-		psw = hash.toString(16);			
-		return psw;
-	}
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
