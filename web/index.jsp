@@ -25,11 +25,7 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-title center-align"><h3>Formulário de Login</h3></div>
-                            <form action="LoginServlet" method="post">
-                                Login: <input type="text" name="login" value=""/><br/>
-                                Senha: <input type="password" name="senha" value=""/><br/>
-                                <input type="submit" value="entrar" class="btn blue-grey">
-                            </form>
+							<a href="login.jsp">Login</a>
                             <h5></br>
                                 <div class="red-text">
                                     <c:out value="${ (empty requestScope.msg) ? ((empty param.msg) ? '' : param.msg): requestScope.msg }" />

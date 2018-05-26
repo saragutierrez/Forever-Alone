@@ -21,34 +21,34 @@ import beans.Usuario;
 public class UsuarioDAO {
 
 	private static final String[] TIPO_USUARIO = {"Admin","Funcionario","Cliente"};
-	public static final String VERIFY_FUNCIONARIO = "SELECT * FROM tb_funcionario where login = ? and senha = ? and status = true;";
-	public static final String VERIFY_CLIENTE = "SELECT * FROM tb_cliente where login = ? and senha = ? and status = true;";
+	public static final String VERIFY_FUNCIONARIO = "SELECT * FROM tb_funcionario WHERE email_funcionario = ? AND senha_funcionario = ? AND data_exclusao is null;";
+	public static final String VERIFY_CLIENTE = "SELECT * FROM tb_cliente WHERE email_cliente = ? AND senha_cliente = ? AND data_exclusao is null;";
     Connection con = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
     
     public static String getTipoUsuario(int idTipo) {
-		return TIPO_USUARIO[idTipo];
+		return TIPO_USUARIO[idTipo-1];
 	}
     
     // Verifica o login no sistema
     // 1 - Usuario ativo
-    // 2 - login e senha validos
+    // 2 - email e senha validos
     // Retorna o usuario
-    public Usuario verificaLogin(String login, String senha) throws IOException, SQLException, InstantiationException, IllegalAccessException{
+    public Usuario verificaLogin(String email, String senha) throws IOException, SQLException, InstantiationException, IllegalAccessException{
     	boolean logou = false;
 	    Usuario user = new Usuario();
 	        
 	        try {
 	            con = new ConnectionFactory().getConnection();
-	            stmt.setString(1, login);
-	            stmt.setString(2, senha);
-	            
 	            //Verificando funcionario
 	            stmt = con.prepareStatement(VERIFY_FUNCIONARIO);
+	            stmt.setString(1, email);
+	            stmt.setString(2, senha);
+	            
 	            rs = stmt.executeQuery();
 	            while(rs.next()){
-	                //Verificando se o funcionario � Admin
+	                //Verificando se o funcionario e Admin
 	                if(rs.getBoolean(1))
 	                	user.setTipoUsuario(getTipoUsuario(1));
 	                else
@@ -57,26 +57,26 @@ public class UsuarioDAO {
 	                user.setNome(rs.getString(3));
 	                logou = true;
 	            }
-                    rs.close();
 	            if(!logou) {
 	            	//Verificando cliente
 		            stmt = con.prepareStatement(VERIFY_CLIENTE);
+		            stmt.setString(1, email);
+		            stmt.setString(2, senha);
 		            rs = stmt.executeQuery();
 		            while(rs.next()){
 		                user.setTipoUsuario(getTipoUsuario(3));
-		                user.setIdUsuario(rs.getInt(2));
-		                user.setNome(rs.getString(3));
+		                user.setIdUsuario(rs.getInt(1));
+		                user.setNome(rs.getString(2));
 		                logou = true;
 		            }
-                            rs.close();
 	            }
+	            rs.close();
 	            return user;
 	        } catch (SQLException e) {
 	            throw new RuntimeException(e);
 	        }finally {
 	            con.close();
 	        }
-
     }
 
 }

@@ -5,7 +5,6 @@
  */
 package servlets;
 
-import com.mysql.cj.util.StringUtils;
 import beans.Usuario;
 import facades.LoginFacade;
 
@@ -42,21 +41,21 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
     	
-    	String login = request.getParameter("login");
+    	String email = request.getParameter("email");
     	String senha = request.getParameter("senha");
-    	Usuario user = LoginFacade.verificaLogin(login,senha);
+    	Usuario user = LoginFacade.verificaLogin(email,senha);
 		
-    	if(!StringUtils.isNullOrEmpty(user.getTipoUsuario())){
+    	if(user == null){
+    		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+    		request.setAttribute("msg", "Usuário/Senha inválidos.");
+    		rd.forward(request, response);
+		}
+		else{
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			//Redirecionar para a pagina inicial correta conforme tipo de usuario
 			String paginaInicial = user.getTipoUsuario();
 			response.sendRedirect(paginaInicial.toLowerCase()+"/home"+paginaInicial+".jsp");
-		}
-		else{
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("msg", "Usuï¿½rio/Senha invï¿½lidos.");
-			rd.forward(request, response);
 		}
     }
     
