@@ -54,8 +54,8 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			//Redirecionar para a pagina inicial correta conforme tipo de usuario
-			String paginaInicial = user.getTipoUsuario();
-			response.sendRedirect(paginaInicial.toLowerCase()+"/home"+paginaInicial+".jsp");
+			String paginaInicial = user.getHome().getCaminho();
+			response.sendRedirect(paginaInicial);
 		}
     }
     

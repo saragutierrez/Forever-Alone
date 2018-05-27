@@ -20,6 +20,7 @@ public class Usuario {
     private String senha;
     private String cpf;
     private Date dataRegistro;
+    private EHomeUsuario home;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -76,5 +77,13 @@ public class Usuario {
     public void setDataRegistro(Date dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
+
+	public EHomeUsuario getHome() {
+		return home;
+	}
+
+	public void setHome(EHomeUsuario home) {
+		this.home = home;
+	}
 
 }

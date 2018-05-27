@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import beans.EHomeUsuario;
 import beans.Usuario;
 
 
@@ -49,10 +50,14 @@ public class UsuarioDAO {
 	            rs = stmt.executeQuery();
 	            while(rs.next()){
 	                //Verificando se o funcionario e Admin
-	                if(rs.getBoolean(1))
+	                if(rs.getBoolean(1)) {
 	                	user.setTipoUsuario(getTipoUsuario(1));
-	                else
+	                	user.setHome(EHomeUsuario.ADMIN);	                	
+	                }
+	                else {
 	                	user.setTipoUsuario(getTipoUsuario(2));
+	                	user.setHome(EHomeUsuario.FUNCIONARIO);
+	                }
 	                user.setIdUsuario(rs.getInt(2));
 	                user.setNome(rs.getString(3));
 	                logou = true;
@@ -65,6 +70,7 @@ public class UsuarioDAO {
 		            rs = stmt.executeQuery();
 		            while(rs.next()){
 		                user.setTipoUsuario(getTipoUsuario(3));
+	                	user.setHome(EHomeUsuario.CLIENTE);
 		                user.setIdUsuario(rs.getInt(1));
 		                user.setNome(rs.getString(2));
 		                logou = true;

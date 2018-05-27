@@ -1,9 +1,10 @@
 package utils;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class DataUtil {
+public class DataUtil implements Serializable{
 
 //	//converter data do java para string
 //	public static String formataDataBeanParaTela(java.util.Date data);
