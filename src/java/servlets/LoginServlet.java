@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
     	Usuario user = LoginFacade.verificaLogin(email,senha);
 		
     	if(user == null){
-    		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+    		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
     		request.setAttribute("msg", "Usuário/Senha inválidos.");
     		rd.forward(request, response);
 		}

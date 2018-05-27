@@ -11,30 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style type="text/css">@import url("materialize/css/materialize.css");</style>
-        <style type="text/css">@import url("materialize/css/materialize.min.css");</style>
-        <style type="text/css">@import url("materialize/css/web2.css");</style>
-        <link rel="icon" href="java.ico">
+        <link rel="icon" href="fa.ico">
         <title>Home</title>
     </head>
-    <body class="bgimg">
-        <div style="height: 50px;"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col offset-m3 m6">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-title center-align"><h3>Formulário de Login</h3></div>
-							<a href="login.jsp">Login</a>
-                            <h5></br>
-                                <div class="red-text">
-                                    <c:out value="${ (empty requestScope.msg) ? ((empty param.msg) ? '' : param.msg): requestScope.msg }" />
-                                </div>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <body>
+        <div class="card-title center-align"><h3>Formulário de Login</h3></div>
+		<a href="login.jsp">Login</a>
     </body>
 </html>
