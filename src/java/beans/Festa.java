@@ -18,6 +18,7 @@ public class Festa {
     private String temaFesta;
     private String localFesta;
     private Date dataFesta;
+    private EStatusConvidadoFesta statusConvidado;
 
     public int getIdFesta() {
         return idFesta;
@@ -58,5 +59,13 @@ public class Festa {
     public void setTemaFesta(String temaFesta) {
         this.temaFesta = temaFesta;
     }
+
+	public EStatusConvidadoFesta getStatusConvidado() {
+		return statusConvidado;
+	}
+
+	public void setStatusConvidado(EStatusConvidadoFesta statusConvidado) {
+		this.statusConvidado = statusConvidado;
+	}
 
 }

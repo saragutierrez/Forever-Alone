@@ -14,7 +14,6 @@ import utils.DataUtil;
 
 public class FuncionarioDAO {
 	    
-		//Compatibilizar Query's com o banco de dados
 		private final String SELECT_ALL = "SELECT * FROM tb_funcionario;";
 		private final String SELECT_ONE = "SELECT * FROM tb_funcionario WHERE id_funcionario = ?;";
 		private final String INSERT = "INSERT INTO tb_funcionario(nome_funcionario, email_funcionario, "
