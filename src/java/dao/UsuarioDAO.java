@@ -22,8 +22,8 @@ import beans.Usuario;
 public class UsuarioDAO {
 
 	private static final String[] TIPO_USUARIO = {"Admin","Funcionario","Cliente"};
-	public static final String VERIFY_FUNCIONARIO = "SELECT * FROM tb_funcionario WHERE email_funcionario = ? AND senha_funcionario = ? AND data_exclusao is null;";
-	public static final String VERIFY_CLIENTE = "SELECT * FROM tb_cliente WHERE email_cliente = ? AND senha_cliente = ? AND data_exclusao is null;";
+	private static final String VERIFY_FUNCIONARIO = "SELECT * FROM tb_funcionario WHERE email_funcionario = ? AND senha_funcionario = ? AND data_exclusao is null;";
+	private static final String VERIFY_CLIENTE = "SELECT * FROM tb_cliente WHERE email_cliente = ? AND senha_cliente = ? AND data_exclusao is null;";
     Connection con = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
