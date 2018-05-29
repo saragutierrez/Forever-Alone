@@ -72,7 +72,8 @@ public class AdminServlet extends HttpServlet {
         	int id = 0;
         	Funcionario f = null;
             switch(action){
-
+            
+        		/* INICIO - MANTER FUNCIONARIOS */
                 //Listar funcionarios do banco de dados
                 case "list":
 				try {
@@ -106,8 +107,8 @@ public class AdminServlet extends HttpServlet {
                     //Preencher dados do funcionario no enviados pelo formulario
                     f = fillFuncionario(request);
                     FuncionarioFacade.update(f);
-                    rd.forward(request, response);
-                    break;
+					response.sendRedirect(home);
+					break;
 
                 //Ir para tela de insercao de um novo funcionario
                 case "formNew":
@@ -121,8 +122,8 @@ public class AdminServlet extends HttpServlet {
                     //Preencher dados do cliente no enviados pelo formulário
                     f = fillFuncionario(request);
                     FuncionarioFacade.insert(f);
-                    rd.forward(request, response);
-                    break;
+					response.sendRedirect(home);
+					break;
 
                 //Remover um funcionario
                 case "remove":
@@ -138,10 +139,11 @@ public class AdminServlet extends HttpServlet {
                 			// TODO Auto-generated catch block
                 			e.printStackTrace();
                 		}
-                		rd.forward(request, response);  
-                	}
+    				}
+                	response.sendRedirect(home);
                 	break;
-
+                	/* FIM - MANTER FUNCIONARIOS */
+                	
                 default:
     				try {
     					lista = FuncionarioFacade.searchAll();
@@ -152,7 +154,6 @@ public class AdminServlet extends HttpServlet {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
     				}
-                        rd = request.getRequestDispatcher("/admin/homeAdmin.jsp");
                         request.setAttribute("lista", lista);
                         rd.forward(request, response);                
                         break;
