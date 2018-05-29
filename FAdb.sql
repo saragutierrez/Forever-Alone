@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `foreveralone`.`tb_festa` (
   `id_festa` INT(11) NOT NULL AUTO_INCREMENT,
   `nome_festa` VARCHAR(80) NULL DEFAULT NULL,
   `tema_festa` VARCHAR(80) NULL DEFAULT NULL,
-  `lugar_festa` VARCHAR(80) NULL DEFAULT NULL,
+  `local_festa` VARCHAR(80) NULL DEFAULT NULL,
   `data_festa` TIMESTAMP NULL DEFAULT NULL,
   `convite_festa` FLOAT NULL DEFAULT NULL,
   `valortotal_festa` FLOAT NULL DEFAULT NULL,
@@ -107,15 +107,15 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- Table `foreveralone`.`tb_convidado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `foreveralone`.`tb_convidado` (
-  `id_cliente` INT(11) NOT NULL,
+  `id_convidado` INT(11) NOT NULL,
   `id_funcionario` INT(11) NOT NULL,
   `id_festa` INT(11) NOT NULL,
-  `status_convidado` VARCHAR(20) NULL DEFAULT NULL,
-  INDEX `fk_clienteconvidado` (`id_cliente` ASC),
+  `status_convidado` TINYINT NULL DEFAULT 0,
+  INDEX `fk_clienteconvidado` (`id_convidado` ASC),
   INDEX `fk_funcionariopromotor` (`id_funcionario` ASC),
   INDEX `fk_festaconvite` (`id_festa` ASC),
   CONSTRAINT `fk_clienteconvidado`
-    FOREIGN KEY (`id_cliente`)
+    FOREIGN KEY (`id_convidado`)
     REFERENCES `foreveralone`.`tb_cliente` (`id_cliente`),
   CONSTRAINT `fk_festaconvite`
     FOREIGN KEY (`id_festa`)
@@ -251,5 +251,8 @@ INSERT INTO `tb_cidade` VALUES (0001,01,'Acrelandia'),(0002,01,'Assis Brasil'),(
 INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha_funcionario , registro_funcionario) VALUES (true, "Luck", "luckstriker1994@gmail.com", md5("striker"), sysdate());
 INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha_funcionario , registro_funcionario) VALUES (true, "Giulia", "giuliacesarpad@gmail.com", md5("arya"), sysdate());
 INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha_funcionario , registro_funcionario) VALUES (true, "Sara", "saralcgutierrez@gmail.com", md5("sansa"), sysdate());
+
+INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
+	values ('Noah', 'noah@aedu.com', md5('noah'), '78003775981', sysdate(), 'Rua das rolas, 69', 81935000, 1543);
 
 SELECT * FROM tb_funcionario;
