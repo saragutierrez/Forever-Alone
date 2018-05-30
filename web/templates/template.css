@@ -1,0 +1,169 @@
+body {
+    background-color: #5A5656;    
+}
+
+.navigation {
+    background:linear-gradient(50deg,#ff7854,#fd267d);
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    position: fixed;
+}
+
+.navigation__profile {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.navigation__title {
+    width: 15vw;
+    height: auto;
+}
+
+.navigation__search {
+    margin: 0 20px;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: #f3f3f3;
+}
+
+.navigation__search__input, .navigation__search__button {
+    border: 0;
+    background: none;
+    height: 30px;
+}
+
+.navigation__search input {
+    width: 20vw;
+    padding: 10px;
+}
+
+.sidenavigation {
+    height: 100vh;
+    width: 15vw;
+    text-align: center;
+    position: fixed;
+    padding-top: 5%;
+}
+
+.sidenavigation__profile {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidenavigation__title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #f3f3f3;
+}
+
+.sidenavigation__div {
+    padding: 20px 0;
+}
+
+.sidenavigation__text {
+    margin-bottom: 0;
+}
+
+.sidenavigation__icon {
+    font-size: 2em;
+}
+
+.sidenavigation__links:hover {
+    background-color: #A5A4A4;
+    cursor: pointer;
+}
+
+.sidenavigation__links {
+    /*border-bottom: 3px solid #e8e8e8;*/
+    color: #f3f3f3;
+}
+
+.content {
+    padding-top: 6%;    
+}
+
+.content__mainbox {
+    background-color: #fff;
+    width: 50vw;
+    height: 50vh;
+    margin-left: 15vw;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.mainbox__title, .sidebox__title {
+    background-color: #f3f3f3;
+    height: 10%;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.mainbox__icon, .mainbox__h6, .sidebox__icon, .sidebox__h6 {
+    display: inline-block;
+    color: #5A5656;
+    margin-right: 10px;
+}
+
+.mainbox__text, .sidebox__text {
+    display: inline-block;
+    padding: 20px;
+}
+
+.mainbox__form {
+    display: inline-block;
+}
+
+.content__sidebox {
+    background-color: #fff;
+    width: 30vw;
+    height: 50vh;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.box__button {
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.box__button--outlined {
+    background-color: #fff;
+    border: 3px solid #65EFE0;
+    color: #65EFE0;
+    transition: width 1s;
+}
+
+.box__button--outlined:hover {
+    cursor: pointer;
+    background-color: #65EFE0;
+    border: 3px solid #65EFE0;
+    color: #fff;
+    box-shadow: 0.5px 1px #888888;
+}
+
+.box__button--filled {
+    background-color: #65EFE0;
+    color: #fff;
+    border: 3px solid #65EFE0;
+    transition: width 1s;
+}
+
+.box__button--filled:hover {
+    cursor: pointer;
+    background-color: #ABFAF2;
+    color: #fff;
+    border: 3px solid #ABFAF2;
+    box-shadow: 0.5px 1px #888888;
+}
