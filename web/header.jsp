@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+        <header>
+            <div class="container-fluid navigation">
+                <div class="navigation__div">
+                	<a href="LogoutServlet" style="color: #fff"><i class="fa fa-power-off" style="font-size:36px"></i></a>
+                    <!-- <img src="" class="navigation__title" alt="Forever Alone">-->
+                </div>
+                <div class="navigation__div">
+                    <form class="navigation__search">
+                        <input type="text" name="value" class="navigation__search__input"/>
+                        <button type="submit" class="navigation__search__button"><i class="fas fa-search"></i></button>
+                    </form>
+                    <img src="https://i.pinimg.com/originals/1b/b8/c2/1bb8c2a02aee9737883fef2040523257.jpg" class="navigation__profile">
+                </div>
+        </header>

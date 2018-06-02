@@ -76,18 +76,18 @@ public class AdminServlet extends HttpServlet {
         		/* INICIO - MANTER FUNCIONARIOS */
                 //Listar funcionarios do banco de dados
                 case "list":
-				try {
-					lista = FuncionarioFacade.searchAll();
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-					request.setAttribute("menu", "listar");
-					request.setAttribute("lista", lista);
-                    rd.forward(request, response);                
+					try {
+						lista = FuncionarioFacade.searchAll();
+					} catch (InstantiationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+						request.setAttribute("menu", "list");
+						request.setAttribute("lista", lista);
+	                    rd.forward(request, response);                
                     break;
                     
                 //Ir para tela de alteracao de nome, email e senha de um funcionario
@@ -96,7 +96,7 @@ public class AdminServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                     if( id > 0){
                         f = FuncionarioFacade.search(id);
-						request.setAttribute("menu", "alterar");
+						request.setAttribute("menu", "form");
 						request.setAttribute("funcionario", f);
 						rd.forward(request, response);                    
                     }
@@ -107,22 +107,21 @@ public class AdminServlet extends HttpServlet {
                     //Preencher dados do funcionario no enviados pelo formulario
                     f = fillFuncionario(request);
                     FuncionarioFacade.update(f);
-					response.sendRedirect(home);
+					response.sendRedirect("AdminServlet");
 					break;
 
                 //Ir para tela de insercao de um novo funcionario
                 case "formNew":
-					request.setAttribute("menu", "novo");
+					request.setAttribute("menu", "form");
 					rd.forward(request, response);
                     break;
                     
-
-                //INserir um novo cliente
+                //Inserir um novo cliente
                 case "new":
                     //Preencher dados do cliente no enviados pelo formul√°rio
                     f = fillFuncionario(request);
                     FuncionarioFacade.insert(f);
-					response.sendRedirect(home);
+					response.sendRedirect("AdminServlet");
 					break;
 
                 //Remover um funcionario
@@ -140,9 +139,16 @@ public class AdminServlet extends HttpServlet {
                 			e.printStackTrace();
                 		}
     				}
-                	response.sendRedirect(home);
+                	response.sendRedirect("AdminServlet");
                 	break;
                 	/* FIM - MANTER FUNCIONARIOS */
+                	
+                	/* INICIO RELAT”RIOS */
+                case "reports":
+                	request.setAttribute("menu", "reports");
+                	response.sendRedirect("AdminServlet");
+					break;
+                	/* FIM RELAT”RIOS */
                 	
                 default:
     				try {
@@ -154,6 +160,7 @@ public class AdminServlet extends HttpServlet {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
     				}
+    					request.setAttribute("menu", "list");
                         request.setAttribute("lista", lista);
                         rd.forward(request, response);                
                         break;
@@ -170,7 +177,8 @@ public class AdminServlet extends HttpServlet {
 				e.printStackTrace();
 			}
                 rd = request.getRequestDispatcher(home);
-                request.setAttribute("lista", lista);
+				request.setAttribute("menu", "list");
+				request.setAttribute("lista", lista);
                 rd.forward(request, response);
                 }        
         //Fim Controller
@@ -182,25 +190,23 @@ public class AdminServlet extends HttpServlet {
     private Funcionario fillFuncionario(HttpServletRequest request) {
     	try {
     		//Pegando dados do formul·rio
-    		int idFuncionario = Integer.parseInt(request.getParameter("idUsuario"));
-    		String nome = request.getParameter("nome");
-    		String email = request.getParameter("email");
-    		String senha1 = request.getParameter("senha1");
-    		String senha2 = request.getParameter("senha2");
-    		
-    		//Verificando igualdade de senhas
-    		String senha = "";
-    		if(SenhaUtil.compararSenha(senha1, senha2))
-    			senha = senha1;
-    		else
-    			throw new Exception("Senhas diferentes");
-    		
     		//Preenchedo bean
     		Funcionario f = new Funcionario();
-    		f.setIdUsuario(idFuncionario);
-    		f.setNome(nome);
-    		f.setEmail(email);
-    		f.setSenha(senha);
+    		String id = request.getParameter("idUsuario");
+    		if(!StringUtils.isNullOrEmpty(id)) {
+    			 f.setIdUsuario(Integer.parseInt(id));
+    		}
+    		f.setNome(request.getParameter("nome"));
+    		f.setEmail(request.getParameter("email"));
+
+    		//Verificando igualdade de senhas
+    		String senha1 = request.getParameter("senha1");
+    		String senha2 = request.getParameter("senha2");
+    		if(SenhaUtil.compararSenha(senha1, senha2)) {
+    			f.setSenha(senha1);    			
+    		}else
+    			throw new Exception("Senhas diferentes");
+    		
     		return f;
     	}catch (Exception e) {
 			e.printStackTrace();

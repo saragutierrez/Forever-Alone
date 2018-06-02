@@ -46,7 +46,7 @@ body {
     width: 15vw;
     text-align: center;
     position: fixed;
-    padding-top: 5%;
+    margin-top: 5%;
 }
 
 .sidenavigation__profile {
@@ -93,7 +93,7 @@ body {
 .content__mainbox {
     background-color: #fff;
     width: 50vw;
-    height: 50vh;
+    height: 75vh;
     margin-left: 15vw;
     margin-top: 20px;
     display: inline-block;
@@ -166,4 +166,19 @@ body {
     color: #fff;
     border: 3px solid #ABFAF2;
     box-shadow: 0.5px 1px #888888;
+}
+
+table {
+	color: #5A5656;
+	text-align: center;
+	margin-left: 2%
+}
+
+tr{
+	height: 70px;
+	text-align: center
+}
+
+a:link {
+	text-decoration: none
 }

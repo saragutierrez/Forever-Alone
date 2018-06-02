@@ -124,7 +124,7 @@ public class FuncionarioServlet extends HttpServlet {
                     break;
                     
 
-                //INserir um novo cliente
+                //Inserir um novo cliente
                 case "new":
                     //Preencher dados do cliente no enviados pelo formulario
                     c = fillCliente(request);
@@ -151,7 +151,8 @@ public class FuncionarioServlet extends HttpServlet {
                 			// TODO Auto-generated catch block
                 			e.printStackTrace();
                 		}
-    					response.sendRedirect(home);                	}
+    					response.sendRedirect(home);
+    					}
                 	break;
             		/* FIM - MANTER CLIENTES */
                 	
