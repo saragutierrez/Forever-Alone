@@ -1,5 +1,5 @@
 body {
-    background-color: #5A5656;    
+    background-color: #5A5656;
 }
 
 .navigation {
@@ -87,18 +87,24 @@ body {
 }
 
 .content {
-    padding-top: 6%;    
+    padding-top: 6%;
 }
 
 .content__mainbox {
     background-color: #fff;
-    width: 50vw;
+    width: 80vw;
     height: 50vh;
     margin-left: 15vw;
     margin-top: 20px;
     display: inline-block;
 }
-
+.form-horizontal {
+    width: 80vw;
+    height: 50vh;
+    margin-left: 40vw;
+    margin-top: 90px;
+    display: inline-block;
+}
 .mainbox__title, .sidebox__title {
     background-color: #f3f3f3;
     height: 10%;

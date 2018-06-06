@@ -24,10 +24,9 @@ public class ClienteFacade implements Serializable{
         
     public static List<Cliente> searchAll() throws InstantiationException, IllegalAccessException, IOException{
         //Busca lista de clientes no banco de dados e retorna um List<Cliente>
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = new ArrayList<Cliente>();
+    	List<Cliente> lista = new ArrayList<Cliente>();
         try {
-            lista = dao.listarClientes();
+            lista = new ClienteDAO().listarClientes();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ClienteFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,26 +35,21 @@ public class ClienteFacade implements Serializable{
     
     public static Cliente search(int id){
         //Busca id do cliente a ser visualizado no parametro da página
-        ClienteDAO dao = new ClienteDAO();
-        Cliente c = dao.buscarCliente(id);
-        return c;
+        return new ClienteDAO().buscarCliente(id);
     }
     
     public static void insert(Cliente c) throws InstantiationException, IllegalAccessException, IOException{
-        ClienteDAO dao = new ClienteDAO();
-        dao.adicionarCliente(c);        
+        new ClienteDAO().adicionarCliente(c);        
     }
     
     public static void update(Cliente c){
-        ClienteDAO dao = new ClienteDAO();
-        dao.alterarCliente(c);
+        new ClienteDAO().alterarCliente(c);
     }
     
     public static void delete(int id) throws InstantiationException, IllegalAccessException, IOException{
         try {
             //Busca cliente no banco de dados e deleta do banco de dados
-            ClienteDAO dao = new ClienteDAO();        
-            dao.deletarCliente(id);
+            new ClienteDAO().deletarCliente(id);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteFacade.class.getName()).log(Level.SEVERE, null, ex);
         }

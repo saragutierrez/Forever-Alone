@@ -15,7 +15,7 @@
         <title>Home</title>
     </head>
     <body>
-        <div class="card-title center-align"><h3>Formulário de Login</h3></div>
 		<a href="login.jsp">Login</a>
+		<a href="form.jsp">Cadastro</a>
     </body>
 </html>

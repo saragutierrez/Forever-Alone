@@ -17,6 +17,9 @@ public class Cliente extends Usuario {
 
     public Cliente() {
 		super();
+		this.endereco = new Endereco();
+		this.perfil = new Perfil();
+		this.preferencias = new Preferencias();
 	}
 
 	public Endereco getEndereco() {

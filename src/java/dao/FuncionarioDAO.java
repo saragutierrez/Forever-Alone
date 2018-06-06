@@ -15,11 +15,12 @@ import utils.DataUtil;
 public class FuncionarioDAO {
 	    
 		private final String SELECT_ALL = "SELECT * FROM tb_funcionario WHERE data_exclusao is null;";
-		private final String SELECT_ONE = "SELECT * FROM tb_funcionario WHERE id_funcionario = ?;";
+		private final String SELECT_ONE = "SELECT * FROM tb_funcionario WHERE id_funcionario = ? AND data_exclusao is null;";
 		private final String INSERT = "INSERT INTO tb_funcionario(nome_funcionario, email_funcionario, "
 	                    + "senha_funcionario, registro_funcionario) values (?,?,?,?);";
-	    private final String UPDATE = "UPDATE tb_funcionario SET nome_funcionario = ?, email_funcionario = ?, senha_funcionario = ? WHERE id_funcionario = ?;";
+	    private final String UPDATE = "UPDATE tb_funcionario SET nome_funcionario = ?, email_funcionario = ?, senha_funcionario = ? WHERE id_funcionario = ? AND data_exclusao is null;";
 	    private final String DELETE = "UPDATE tb_funcionario SET data_exclusao = ? WHERE id_funcionario = ?;";
+
 	    Connection con = null;
 	    PreparedStatement stmt = null;
 	    ResultSet rs = null;
@@ -37,7 +38,6 @@ public class FuncionarioDAO {
 	            rs = stmt.executeQuery();
 	            while(rs.next()){
 	                Funcionario aux =  new Funcionario();
-	                aux.setIdUsuario(rs.getInt(2));
 	                aux.setNome(rs.getString(3));
 	                aux.setEmail(rs.getString(4));
 	                lista.add(aux);
@@ -58,7 +58,7 @@ public class FuncionarioDAO {
 	                    stmt.setString(1, funcionario.getNome());
 	                    stmt.setString(2, funcionario.getEmail());
 	                    stmt.setString(3, funcionario.getSenha());
-	                    stmt.setTimestamp(4, DataUtil.formataDataHoraBeanParaSql(new Date()));
+	                    stmt.setTimestamp(4, DataUtil.formataDataHoraBeanParaSql(funcionario.getDataRegistro()));
 	                    stmt.execute();
 	                    stmt.close();
 	            } catch (SQLException e) {

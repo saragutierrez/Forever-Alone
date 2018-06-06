@@ -15,7 +15,14 @@ public class Endereco {
     private String rua;
     private int cep;
 
-    public Cidade getCidade() {
+    
+    
+    public Endereco() {
+		super();
+		this.cidade = new Cidade();
+	}
+
+	public Cidade getCidade() {
         return cidade;
     }
 
