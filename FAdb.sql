@@ -224,18 +224,18 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `foreveralone`.`tb_preferencias` (
   `id_preferencias` INT(11) NOT NULL AUTO_INCREMENT,
-  `genero_perfil` CHAR(1) NULL DEFAULT NULL,
-  `escolaridade_perfil` VARCHAR(255) NULL DEFAULT NULL,
-  `cor_cabelo_perfil` VARCHAR(50) NULL DEFAULT NULL,
-  `cor_pele_perfil` VARCHAR(50) NULL DEFAULT NULL,
-  `idadeMin_perfil` TIMESTAMP NULL DEFAULT NULL,
-  `idadeMax_perfil` TIMESTAMP NULL DEFAULT NULL,
-  `id_cliente` INT(11) NULL DEFAULT NULL,
+  `genero_preferencias` CHAR(1) NULL DEFAULT NULL,
+  `escolaridade_preferencias` VARCHAR(255) NULL DEFAULT NULL,
+  `cor_cabelo_preferencias` VARCHAR(50) NULL DEFAULT NULL,
+  `cor_pele_preferencias` VARCHAR(50) NULL DEFAULT NULL,
+  `idadeMin_preferencias` INT NULL DEFAULT NULL,
+  `idadeMax_preferencias` INT NULL DEFAULT NULL,
+  `id_perfil` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id_preferencias`),
-  INDEX `fk_id_preferencias` (`id_cliente` ASC),
+  INDEX `fk_id_preferencias` (`id_perfil` ASC),
   CONSTRAINT `fk_id_preferencias`
-    FOREIGN KEY (`id_cliente`)
-    REFERENCES `foreveralone`.`tb_cliente` (`id_cliente`))
+    FOREIGN KEY (`id_perfil`)
+    REFERENCES `foreveralone`.`tb_perfil` (`id_perfil`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -252,7 +252,14 @@ INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha
 INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha_funcionario , registro_funcionario) VALUES (true, "Giulia", "giuliacesarpad@gmail.com", md5("arya"), sysdate());
 INSERT INTO tb_funcionario(isAdmin, nome_funcionario , email_funcionario , senha_funcionario , registro_funcionario) VALUES (true, "Sara", "saralcgutierrez@gmail.com", md5("sansa"), sysdate());
 
+-- Login do cliente é seu e-mail e senha do cliente é seu nome sem case-sensitive
 INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
 	values ('Noah', 'noah@aedu.com', md5('noah'), '78003775981', sysdate(), 'Rua das rolas, 69', 81935000, 1543);
-
-SELECT * FROM tb_funcionario;
+INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
+	values ('Marcos', 'marcosviniciussergiosales@coldblock.com.br', md5('marcos'), '91050510534', sysdate(), 'Rua dos Sabiás, 1515', 77823658, 9559);
+INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
+	values ('Thomas', 'thomasanderson@wikimetal.com.br', md5('thomas'), '57029730461', sysdate(), 'Parque da Maternidade, 388', 69905024, 4394);
+INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
+	values ('Benjamin', 'bbenjaminsamuel@cognis.com', md5('benjamin'), '92206030390', sysdate(), 'Rua Olegário Martins Teixeira, 364', 75703100, 2071);
+INSERT INTO tb_cliente(nome_cliente, email_cliente, senha_cliente, cpf_cliente, registro_cliente, endereco_cliente, cep_cliente, id_cidade) 
+	values ('Julio', 'jjuliorodrigooliveira@paginacom.com.br', md5('julio'), '34490508778', sysdate(), 'Rua Juarez Távora, 433', 45608196, 0677);
