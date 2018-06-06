@@ -72,6 +72,7 @@ public class CadastroServlet extends HttpServlet {
     		
     		//Informações opcionais
     		String preferenciaGenero = request.getParameter("preferenciaGenero");
+    		String preferenciaEscolaridade = request.getParameter("preferenciaEscolaridade");
     		String preferenciaCorCabelo = request.getParameter("preferenciaCorCabelo");
     		String preferenciaCorPele = request.getParameter("preferenciaCorPele");
     		String preferenciaIdadeMinima = request.getParameter("preferenciaIdadeMin");
@@ -79,6 +80,8 @@ public class CadastroServlet extends HttpServlet {
     		
     		if(!StringUtils.isNullOrEmpty(preferenciaGenero))
     			c.getPreferencias().setGenero(preferenciaGenero);
+			if(!StringUtils.isNullOrEmpty(preferenciaEscolaridade))
+				c.getPreferencias().setEscolaridade(preferenciaEscolaridade);
 			if(!StringUtils.isNullOrEmpty(preferenciaCorCabelo))
 				c.getPreferencias().setCorCabelo(preferenciaCorCabelo);
 			if(!StringUtils.isNullOrEmpty(preferenciaCorPele))
