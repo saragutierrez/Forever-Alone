@@ -46,4 +46,9 @@ public class Cliente extends Usuario {
         this.preferencias = preferencias;
     }
 
+	@Override
+	public String toString() {
+		return "Cliente [endereco=" + endereco + ", perfil=" + perfil + ", preferencias=" + preferencias + "]";
+	}
+
 }

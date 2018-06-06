@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Perfil {
 
+	private int idPerfil;
     private String genero;
     private String escolaridade;
     private String corCabelo;
@@ -20,7 +21,15 @@ public class Perfil {
     private Date dataNasc;
     private String descricao;
 
-    public String getGenero() {
+    public int getIdPerfil() {
+		return idPerfil;
+	}
+
+	public void setIdPerfil(int idPerfil) {
+		this.idPerfil = idPerfil;
+	}
+
+	public String getGenero() {
         return genero;
     }
 
@@ -66,6 +75,12 @@ public class Perfil {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Perfil [idPerfil=" + idPerfil + ", genero=" + genero + ", escolaridade=" + escolaridade + ", corCabelo="
+				+ corCabelo + ", corPele=" + corPele + ", dataNasc=" + dataNasc + ", descricao=" + descricao + "]";
 	}
 
 }

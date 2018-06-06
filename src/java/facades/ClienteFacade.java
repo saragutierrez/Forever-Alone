@@ -43,7 +43,18 @@ public class ClienteFacade implements Serializable{
     }
     
     public static void update(Cliente c){
-        new ClienteDAO().alterarCliente(c);
+        try {
+			new ClienteDAO().alterarCliente(c);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public static void delete(int id) throws InstantiationException, IllegalAccessException, IOException{

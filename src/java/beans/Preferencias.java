@@ -11,6 +11,7 @@ package beans;
  */
 public class Preferencias {
 
+	private int idPreferencias;
     private String genero;
     private String escolaridade;
     private String corCabelo;
@@ -18,7 +19,15 @@ public class Preferencias {
     private int idadeInicial;
     private int idadeFinal;
 
-    public String getGenero() {
+    public int getIdPreferencias() {
+		return idPreferencias;
+	}
+
+	public void setIdPreferencias(int idPreferencias) {
+		this.idPreferencias = idPreferencias;
+	}
+
+	public String getGenero() {
         return genero;
     }
 
@@ -66,4 +75,11 @@ public class Preferencias {
         this.idadeFinal = idadeFinal;
     }
 
+	@Override
+	public String toString() {
+		return "Preferencias [idPreferencias=" + idPreferencias + ", genero=" + genero + ", escolaridade="
+				+ escolaridade + ", corCabelo=" + corCabelo + ", corPele=" + corPele + ", idadeInicial=" + idadeInicial
+				+ ", idadeFinal=" + idadeFinal + "]";
+	}
+	
 }
