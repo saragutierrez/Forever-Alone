@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="template.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style=";color: white;background:linear-gradient(50deg,#ff7854,#fd267d);">
+            <a class="navbar-brand" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/#">Fixed navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="sidenavigation__text">
+                  <i class="fas fa-couch sidenavigation__icon"></i>Encontros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidenavigation__text"> <i class="fas fa-users sidenavigation__icon"></i> Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidenavigation__text"><i class="fas fa-heart sidenavigation__icon"></i>Casamento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidenavigation__text"><i class="fas fa-file sidenavigation__icon"></i>Relatórios</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <a><img src="https://i.pinimg.com/originals/1b/b8/c2/1bb8c2a02aee9737883fef2040523257.jpg" class="sidenavigation__profile">
+                Giulia Padovani</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" for="textinput_nome">Nome</label>
+                        <div class="col-md-12">
+                            <input id="textinput_nome" name="textinput_nome" placeholder="digitar nome completo" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" for="textinput_email">Email</label>
+                        <div class="col-md-12">
+                            <input id="textinput_email" name="textinput_email" placeholder="digite um email válido" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" for="textinput_cpf">CPF</label>
+                        <div class="col-md-12">
+                            <input id="textinput_cpf" name="textinput_cpf" placeholder="digite seu CPF" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <div class="row" style="margin-left: auto;">
+                            <div class="col-md-7">
+                                <label class="control-label" for="textinput_data">Data de Nascimento</label>
+                                <div>
+                                    <input id="textinput_nasc" name="textinput_nasc" class="form-control input-md" required="" type="date">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label" for="textinput_sexo">Sexo</label>
+                                <div>
+                                    <select name="sexo" class="form-control">
+                                        <option value="M"> M </option>
+                                        <option value="F"> F </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input class="input-checkbox" type="checkbox" value="">Option 1
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input class="input-checkbox" type="checkbox" value="">Option 2
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input class="input-checkbox" type="checkbox" value="">Option 3
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" for="textinput_nome">Email</label>
+                        <div class="col-md-12">
+                            <input id="textinput_email" name="textinput_email" placeholder="digitar email" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-12  control-label" for="textinput_email">Senha</label>
+                        <div class="col-md-12">
+                            <input type="password" id="textinput_senha" name="textinput_senha" placeholder="digite uma senha" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" name="textinput_confirm_senha" for="textinput_confirm_senha">Confirme sua senha</label>
+                        <div class="col-md-12">
+                            <input type="password" id="textinput_senha" name="textinput_senha" placeholder="digite uma senha" class="form-control input-md" required="" type="text">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="radio">
+                            <input class="input-radio" type="radio" name="optradio" value="">Option 1
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="radio">
+                            <input class="input-radio" type="radio" name="optradio" value="">Option 2
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="radio">
+                            <input class="input-radio" type="radio" name="optradio" value="">Option 3
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
