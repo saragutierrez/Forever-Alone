@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,14 @@ public class FestaDAO {
 			+ "FROM tb_festa f, tb_convidado c WHERE f.id_festa = c.id_festa AND c.id_convidado = ?;";
 	private final String SELECT_ONE = "SELECT * FROM tb_festa WHERE id_festa = ?;";
 	private final String INSERT = "INSERT INTO tb_festa(nome_festa, tema_festa, local_festa, data_festa) values (?,?,?,?);";
-    private final String CONFIRM_PARTY = "INSERT INTO tb_convidado VALUES (?, ?, ?, 1);";
-    private final String RECUSE_PARTY = "INSERT INTO tb_convidado VALUES (?, ?, ?, 2);";
+	
+	private final String INVITE_PARTY = "INSERT INTO tb_convidado VALUES (?, ?, ?, "
+							+ EStatusConvidadoFesta.ENVIADO.getIdStatusConvidado() + ");";
+    private final String CONFIRM_PARTY = "UPDATE tb_convidado SET status_convidado = "
+							+ EStatusConvidadoFesta.ACEITO.getIdStatusConvidado() + " WHERE id_convidado = ? AND id_festa = ?;";
+    private final String RECUSE_PARTY = "UPDATE tb_convidado SET status_convidado = "
+    						+ EStatusConvidadoFesta.RECUSADO.getIdStatusConvidado() + " WHERE id_convidado = ? AND id_festa = ?;";
+    
     Connection con = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
@@ -119,18 +126,48 @@ public class FestaDAO {
     public void adicionarFesta(Festa festa) throws InstantiationException, IllegalAccessException, IOException {
             try {
                     con = new ConnectionFactory().getConnection();
-                    stmt = con.prepareStatement(INSERT);
+                    stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
                     stmt.setString(1, festa.getNomeFesta());
                     stmt.setString(2, festa.getTemaFesta());
                     stmt.setString(3, festa.getLocalFesta());
                     stmt.setTimestamp(4, DataUtil.formataDataHoraBeanParaSql(festa.getDataFesta()));
                     stmt.execute();
+                    if(!festa.getConvidadosFesta().equals(null)) {
+    	            	rs = stmt.getGeneratedKeys();
+    	            	if(rs.next()) {
+	    	            	int idFesta = rs.getInt(1);
+	    	            	int[] dadosConvite = {0,festa.getIdPromotor(),idFesta};
+	    	            	for (int idConvidado : festa.getConvidadosFesta()) {
+	    	            		dadosConvite[0] = idConvidado;
+	    	            		convidarCliente(dadosConvite);
+	    	            	}
+	    	            	stmt.close();
+						}
+    	            }else {
+    	            	stmt.close();
+    	            }
                     stmt.close();
             } catch (SQLException e) {
                     throw new RuntimeException(e);
             } finally {
                     try{con.close();}catch(Exception e){}
             }
+    }
+    
+    public void convidarCliente(int[] convidadoFesta) throws InstantiationException, IllegalAccessException, IOException {
+    	try {
+            con = new ConnectionFactory().getConnection();
+            stmt = con.prepareStatement(INVITE_PARTY);
+            stmt.setInt(1, convidadoFesta[0]);
+            stmt.setInt(2, convidadoFesta[1]);
+            stmt.setInt(3, convidadoFesta[2]);
+            stmt.execute();
+            stmt.close();
+	    }catch (SQLException e) {
+	        throw new RuntimeException(e);
+	    }finally {
+	    	try{con.close();}catch(Exception e){}
+	    }
     }
 
     public void aceitarConviteFesta(int[] dadosConvite) throws InstantiationException, IllegalAccessException, IOException {
@@ -139,15 +176,14 @@ public class FestaDAO {
                 stmt = con.prepareStatement(CONFIRM_PARTY);
                 stmt.setInt(1, dadosConvite[0]);
                 stmt.setInt(2, dadosConvite[1]);
-                stmt.setInt(3, dadosConvite[2]);
-                stmt.execute();
+                stmt.executeUpdate();
                 stmt.close();
         } catch (SQLException e) {
                 throw new RuntimeException(e);
         } finally {
                 try{con.close();}catch(Exception e){}
         }
-}
+    }
 
     public void recusarConviteFesta(int[] dadosConvite) throws InstantiationException, IllegalAccessException, IOException {
         try {
@@ -155,14 +191,13 @@ public class FestaDAO {
             stmt = con.prepareStatement(RECUSE_PARTY);
             stmt.setInt(1, dadosConvite[0]);
             stmt.setInt(2, dadosConvite[1]);
-            stmt.setInt(3, dadosConvite[2]);
-            stmt.execute();
+            stmt.executeUpdate();
             stmt.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
         } finally {
                 try{con.close();}catch(Exception e){}
         }
-}
+    }
 
 }

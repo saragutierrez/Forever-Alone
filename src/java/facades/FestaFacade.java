@@ -51,6 +51,17 @@ public class FestaFacade implements Serializable{
 		}
 	}
 	
+	/** Recebe vetor de int com id_convidado (cliente) id_funcionario (promotor) e id_festa **/
+	public static void invite(int[] convidadoFesta){
+		try {
+			new FestaDAO().convidarCliente(convidadoFesta);			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	/** Recebe vetor de int com id_convidado (cliente) e id_festa **/
 	public static void confirm(int[] dadosConvite){
 		try {
 			new FestaDAO().aceitarConviteFesta(dadosConvite);			
@@ -60,9 +71,10 @@ public class FestaFacade implements Serializable{
 		}
 	}
 	
+	/** Recebe vetor de int com id_convidado (cliente) e id_festa **/
 	public static void recuse(int[] dadosConvite){
 		try {
-			new FestaDAO().recusarConviteFesta(dadosConvite);			
+			new FestaDAO().recusarConviteFesta(dadosConvite);
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

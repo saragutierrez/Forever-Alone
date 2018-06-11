@@ -13,11 +13,13 @@ import java.util.Date;
  */
 public class Festa {
 
-    private int idFesta;
-    private String nomeFesta;
+	private int idFesta;
+    private int idPromotor;
+	private String nomeFesta;
     private String temaFesta;
     private String localFesta;
     private Date dataFesta;
+    private int[] convidadosFesta;
     private EStatusConvidadoFesta statusConvidado;
 
     public int getIdFesta() {
@@ -28,7 +30,15 @@ public class Festa {
         this.idFesta = idFesta;
     }
 
-    public String getNomeFesta() {
+    public int getIdPromotor() {
+		return idPromotor;
+	}
+
+	public void setIdPromotor(int idPromotor) {
+		this.idPromotor = idPromotor;
+	}
+
+	public String getNomeFesta() {
 		return nomeFesta;
 	}
 
@@ -60,6 +70,14 @@ public class Festa {
         this.temaFesta = temaFesta;
     }
 
+	public int[] getConvidadosFesta() {
+		return convidadosFesta;
+	}
+
+	public void setConvidadosFesta(int[] convidadosFesta) {
+		this.convidadosFesta = convidadosFesta;
+	}
+
 	public EStatusConvidadoFesta getStatusConvidado() {
 		return statusConvidado;
 	}
@@ -68,4 +86,9 @@ public class Festa {
 		this.statusConvidado = statusConvidado;
 	}
 
+	@Override
+	public String toString() {
+		return "Festa [idFesta=" + idFesta + ", nomeFesta=" + nomeFesta + ", temaFesta=" + temaFesta + ", localFesta="
+				+ localFesta + ", dataFesta=" + dataFesta + ", statusConvidado=" + statusConvidado + "]";
+	}
 }
