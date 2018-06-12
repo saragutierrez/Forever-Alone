@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `foreveralone`.`tb_encontro` (
   `id_solicitado_encontro` INT(11) NOT NULL,
   `lugar_encontro` VARCHAR(255) NULL DEFAULT NULL,
   `data_encontro` TIMESTAMP NULL DEFAULT NULL,
-  `status_encontro` VARCHAR(10) NULL DEFAULT NULL,
+  `status_encontro` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id_encontro`, `id_solicitante_encontro`, `id_solicitado_encontro`),
   INDEX `fk_id_solicitante_encontro` (`id_solicitante_encontro` ASC),
   INDEX `fk_id_solicitado_encontro` (`id_solicitado_encontro` ASC),
