@@ -13,10 +13,12 @@ import java.util.Date;
  */
 public class Encontro {
 
-    private int idEncontro;
+	private int idEncontro;
+	private int idSolicitante;
+	private int idSolicitado;
     private Date dataEncontro;
     private String localEncontro;
-    private String status;
+    private EStatusEncontro status;
 
     public int getIdEncontro() {
         return idEncontro;
@@ -26,7 +28,23 @@ public class Encontro {
         this.idEncontro = idEncontro;
     }
 
-    public Date getDataEncontro() {
+    public int getIdSolicitante() {
+		return idSolicitante;
+	}
+
+	public void setIdSolicitante(int idSolicitante) {
+		this.idSolicitante = idSolicitante;
+	}
+
+	public int getIdSolicitado() {
+		return idSolicitado;
+	}
+
+	public void setIdSolicitado(int idSolicitado) {
+		this.idSolicitado = idSolicitado;
+	}
+
+	public Date getDataEncontro() {
         return dataEncontro;
     }
 
@@ -42,12 +60,12 @@ public class Encontro {
         this.localEncontro = localEncontro;
     }
 
-    public String getStatus() {
-        return status;
-    }
+	public EStatusEncontro getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public void setStatus(EStatusEncontro status) {
+		this.status = status;
+	}
 
 }
