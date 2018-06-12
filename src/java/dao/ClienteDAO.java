@@ -47,6 +47,11 @@ public class ClienteDAO {
 	
 	private final String DELETE = "UPDATE tb_cliente SET data_exclusao = ? WHERE id_cliente = ?;";
 	
+	private final String SELECT_COMPATIVEIS = "SELECT c.nome_cliente, p.id_perfil, p.genero_perfil, p.escolaridade_perfil, p.cor_cabelo_perfil, p.cor_pele_perfil, "
+			+ "p.dataNasc_perfil, p.descricao_perfil, p.id_cliente FROM tb_cliente c, tb_perfil p "
+			+ "WHERE p.id_cliente = c.id_cliente AND p.genero_perfil = ? AND p.escolaridade_perfil = ? AND p.cor_cabelo_perfil = ? AND p.cor_pele_perfil = ? "
+			+ "AND c.data_exclusao is null;";
+	
     Connection con = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
@@ -298,5 +303,38 @@ public class ClienteDAO {
             stmt.close();
         }
     }
-    
+
+    public List<Cliente> listarClientesCompativeis(Preferencias preferencias) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException{        
+        List<Cliente> lista = new ArrayList<Cliente>();
+        try {
+            con = new ConnectionFactory().getConnection();
+            stmt = con.prepareStatement(SELECT_COMPATIVEIS);
+            stmt.setString(1, preferencias.getGenero());
+            stmt.setString(2, preferencias.getCorCabelo());
+            stmt.setString(3, preferencias.getCorPele());
+            stmt.setString(4, preferencias.getEscolaridade());
+            rs = stmt.executeQuery();
+            while(rs.next()){
+            	if(DataUtil.verificaIdadeIntervalo(rs.getTimestamp(7), preferencias.getIdadeInicial(), preferencias.getIdadeFinal())) {
+            		Cliente aux =  new Cliente();
+            		aux.setNome(rs.getString(1));
+            		aux.getPerfil().setIdPerfil(rs.getInt(2));                    
+            		aux.getPerfil().setGenero(rs.getString(3));
+            		aux.getPerfil().setEscolaridade(rs.getString(4));
+            		aux.getPerfil().setCorCabelo(rs.getString(5));
+            		aux.getPerfil().setCorPele(rs.getString(6));
+            		aux.getPerfil().setDataNasc(rs.getTimestamp(7));
+            		aux.getPerfil().setDescricao(rs.getString(8));
+            		aux.setIdUsuario(rs.getInt(9));
+            		lista.add(aux);            		
+            	}
+            }
+            rs.close();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            con.close();
+        }                 
+        return lista;
+    }
 }

@@ -3,6 +3,7 @@ package utils;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class DataUtil implements Serializable{
 
@@ -53,5 +54,32 @@ public class DataUtil implements Serializable{
 	public static java.sql.Timestamp formataDataHoraBeanParaSql(java.util.Date dataHora){
         java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(dataHora.getTime());
         return sqlTimestamp ;
+	}
+	
+	//Verifica se a data passada no parâmetro está contida no intervalo solicitado
+	public static boolean verificaIdadeIntervalo(java.sql.Timestamp dataNasc, int min, int max) {
+		
+		//converte dataNasc Timestamp para Calendar
+		java.util.Date data = formataDataHoraSqlParaBean(dataNasc);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		try {
+			data = (java.util.Date)formatter.parse(data.toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		Calendar dataCur = Calendar.getInstance();
+		dataCur.setTime(data);
+		
+		//Criando datas minimas e máximas
+		Calendar dataMin = Calendar.getInstance();
+		dataMin.set((dataMin.get(Calendar.YEAR)-min), dataMin.get(Calendar.MONTH), dataMin.get(Calendar.DATE));
+		Calendar dataMax = Calendar.getInstance();
+		dataMax.set((dataMax.get(Calendar.YEAR)-min), dataMax.get(Calendar.MONTH), dataMax.get(Calendar.DATE));
+		
+		//
+		if(dataCur.before(dataMax) && dataCur.after(dataMin))
+			return true;
+		return false;
 	}
 }
