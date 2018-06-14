@@ -167,3 +167,11 @@ body {
     border: 3px solid #ABFAF2;
     box-shadow: 0.5px 1px #888888;
 }
+
+h3 {
+    color: #5A5656
+}
+
+table {
+    border-radius: 50px;
+}
